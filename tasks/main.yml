@@ -1,1 +1,82 @@
 ---
+- name: Ensure OS version is EL7
+  assert:
+    that:
+      - "ansible_os_family == 'RedHat'"
+      - "ansible_facts['distribution_major_version'] == '7'"
+    success_msg: "{{ ansible_os_family  }} {{ ansible_facts['distribution_major_version'] }} is supported."
+    fail_msg: "{{ ansible_os_family }} {{ ansible_facts['distribution_major_version'] }} is not supported."
+  tags:
+    - keepalived
+
+- name: Install yum Copr repo for keepalived owned by ashleykleynhans
+  yum_repository:
+    name: "{{ keepalived_repo_name }}"
+    description: "{{ keepalived_repo_name }}"
+    baseurl: "{{ keepalived_repo_url }}/sclo/{{ ansible_facts['distribution_major_version'] }}/$basearch/rh/"
+    baseurl: "{{ keepalived_repo_url }}/epel-{{ ansible_facts['distribution_major_version'] }}-$basearch/"
+    gpgcheck: True
+    gpgkey: "{{ keepalived_yum_gpg_key }}"
+    proxy: _none_
+    includepkgs: "{{ epel_includepkgs | default(omit) }}"
+  tags:
+    - keepalived
+
+- name: Include role evrardjp.keepalived
+  include_role:
+    name: evrardjp.keepalived
+    apply:
+      tags:
+        - keepalived
+  tags:
+    - keepalived
+
+- name: Install keepalived common logging function for bash scripts
+  copy:
+    src: files/bash_logging.sh
+    dest: /etc/keepalived/bash_logging.sh
+    owner: root
+    group: root
+    mode: 0755
+  tags:
+    - keepalived
+
+- name: Install keepalived notification script for MASTER status
+  copy:
+    src: files/notify_master.sh
+    dest: /etc/keepalived/notify_master.sh
+    owner: root
+    group: root
+    mode: 0755
+  tags:
+    - keepalived
+
+- name: Install keepalived notification script for MASTER status
+  copy:
+    src: files/notify_backup.sh
+    dest: /etc/keepalived/notify_backup.sh
+    owner: root
+    group: root
+    mode: 0755
+  tags:
+    - keepalived
+
+- name: Install keepalived notification script for STOPPED status
+  copy:
+    src: files/notify_stop.sh
+    dest: /etc/keepalived/notify_stop.sh
+    owner: root
+    group: root
+    mode: 0755
+  tags:
+    - keepalived
+
+- name: Install keepalived notification script for FAULT status
+  copy:
+    src: files/notify_fault.sh
+    dest: /etc/keepalived/notify_fault.sh
+    owner: root
+    group: root
+    mode: 0755
+  tags:
+    - keepalived
