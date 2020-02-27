@@ -37,6 +37,13 @@
   tags:
     - keepalived
 
+- name: Ensure no new "keepalived.conf.rpmnew" file appeared
+  file:
+    path: /etc/keepalived/keepalived.conf.rpmnew
+    state: absent
+  tags:
+    - keepalived
+
 - name: Install keepalived common logging function for bash scripts
   copy:
     src: files/bash_logging.sh
