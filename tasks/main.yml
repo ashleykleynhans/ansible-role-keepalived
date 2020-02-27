@@ -12,8 +12,7 @@
 - name: Install yum Copr repo for keepalived owned by ashleykleynhans
   yum_repository:
     name: "{{ keepalived_repo_name }}"
-    description: "{{ keepalived_repo_name }}"
-    baseurl: "{{ keepalived_repo_url }}/sclo/{{ ansible_facts['distribution_major_version'] }}/$basearch/rh/"
+    description: "{{ keepalived_repo_desc }}"
     baseurl: "{{ keepalived_repo_url }}/epel-{{ ansible_facts['distribution_major_version'] }}-$basearch/"
     gpgcheck: True
     gpgkey: "{{ keepalived_yum_gpg_key }}"
