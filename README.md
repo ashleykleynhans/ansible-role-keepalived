@@ -4,33 +4,27 @@ The version of keepalived (1.3.5) that is provided in the CentOS repositories is
 
 This role installs the most recent version of keepalived (currently 2.0.20) on CentOS systems, along with the evrardjp.keepalived role in order to configure it.
 
-Requirements
-------------
+## Requirements
 
 None.  This role manages and installs all required dependencies.
 
-Role Variables
---------------
+## Role Variables
 
 TODO
 
-Dependencies
-------------
+## Dependencies
 
  - https://galaxy.ansible.com/evrardjp/keepalived
 
 
-Example Playbook
-----------------
+## Example Playbook
 
 TODO
 
-License
--------
+## License
 
 GPLv2
 
-Author Information
-------------------
+## Author Information
 
 Ashley Kleynhans
