@@ -64,7 +64,7 @@
   tags:
     - keepalived
 
-- name: Install keepalived notification script for MASTER status
+- name: Install keepalived notification script for BACKUP status
   copy:
     src: files/notify_backup.sh
     dest: /etc/keepalived/notify_backup.sh
@@ -91,5 +91,41 @@
     owner: root
     group: root
     mode: 0755
+  tags:
+    - keepalived
+
+- name: Insert additional commands to the MASTER notification script
+  lineinfile:
+    path: /etc/keepalived/notify_master.sh
+    line: "{{ item }}"
+  with_items: "{{ keepalived_additional_notify_master }}"
+  when: keepalived_additional_notify_master is defined
+  tags:
+    - keepalived
+
+- name: Insert additional commands to the BACKUP notification script
+  lineinfile:
+    path: /etc/keepalived/notify_backup.sh
+    line: "{{ item }}"
+  with_items: "{{ keepalived_additional_notify_backup }}"
+  when: keepalived_additional_notify_backup is defined
+  tags:
+    - keepalived
+
+- name: Insert additional commands to the STOPPED notification script
+  lineinfile:
+    path: /etc/keepalived/notify_stop.sh
+    line: "{{ item }}"
+  with_items: "{{ keepalived_additional_notify_stop }}"
+  when: keepalived_additional_notify_stop is defined
+  tags:
+    - keepalived
+
+- name: Insert additional commands to the FAULT notification script
+  lineinfile:
+    path: /etc/keepalived/notify_fault.sh
+    line: "{{ item }}"
+  with_items: "{{ keepalived_additional_notify_fault }}"
+  when: keepalived_additional_notify_fault is defined
   tags:
     - keepalived
