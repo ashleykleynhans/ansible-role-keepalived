@@ -124,6 +124,7 @@
 - name: Insert additional commands to the FAULT notification script
   lineinfile:
     path: /etc/keepalived/notify_fault.sh
+    regexp: "^{{ item }}"
     line: "{{ item }}"
   with_items: "{{ keepalived_additional_notify_fault }}"
   when: keepalived_additional_notify_fault is defined
