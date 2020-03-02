@@ -1,6 +1,6 @@
 galaxy_info:
   author: Ashley Kleynhans
-  description: The version of keepalived (1.3.5) that is provided in the CentOS repositories is extremely outdated, and contains several bugs, especially with regards to excuting notification scripts. This role installs the most recent version of keepalived (currently 2.0.20) on CentOS systems, along with the evrardjp.keepalived role in order to configure it.
+  description: The version of keepalived (1.3.5) provided in CentOS repositories is outdated, and contains bugs. This role installs the most recent version of keepalived (2.0.20) on CentOS, and uses the evrardjp.keepalived role to configure it.
   company: First National Bank (FNB)
   license: GPLv2
   min_ansible_version: 2.9
