@@ -1,9 +1,9 @@
 ---
-- name: Ensure OS version is EL7
+- name: Ensure OS version is EL7 or EL8
   assert:
     that:
       - "ansible_os_family == 'RedHat'"
-      - "ansible_facts['distribution_major_version'] == '7'"
+      - "ansible_facts['distribution_major_version'] == '7' or ansible_facts['distribution_major_version'] == '8'"
     success_msg: "{{ ansible_os_family  }} {{ ansible_facts['distribution_major_version'] }} is supported."
     fail_msg: "{{ ansible_os_family }} {{ ansible_facts['distribution_major_version'] }} is not supported."
   tags:
