@@ -13,7 +13,7 @@
   yum_repository:
     name: "{{ keepalived_repo_name }}"
     description: "{{ keepalived_repo_desc }}"
-    baseurl: "{{ keepalived_repo_url }}/epel-{{ ansible_facts['distribution_major_version'] }}-$basearch/"
+    baseurl: "{{ keepalived_repo_url }}/epel-7-$basearch/"
     gpgcheck: True
     gpgkey: "{{ keepalived_yum_gpg_key }}"
     proxy: _none_
