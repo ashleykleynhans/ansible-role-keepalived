@@ -7,7 +7,7 @@
 # logfile is a default, but you can override it by specifying your own logfile within the script
 # you are logging from.
 #
-# Written by Ashley Kleynhans <ashley.kleynhans@fnb.co.za>
+# Written by Ashley Kleynhans
 
 logfile="/tmp/bash_logging.log"
 
