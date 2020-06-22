@@ -1,6 +1,6 @@
 ---
 keepalived_epel_version: "7"
-keepalived_version: "2.0.20"
+keepalived_version: "2.1.2"
 keepalived_yum_gpg_key: "https://download.copr.fedorainfracloud.org/results/ashleykleynhans/keepalived/pubkey.gpg"
 keepalived_repo_name: "ashleykleynhans-keepalived"
 keepalived_repo_desc: "Copr repo for keepalived owned by ashleykleynhans"
